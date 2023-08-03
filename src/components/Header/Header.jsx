@@ -9,17 +9,18 @@ import { ROUTES } from "../../utils/routes";
 import LOGO from "../../images/logo.svg";
 import AVATAR from "../../images/avatar.jpg";
 
-import { toggleForm } from "../../features/user/userSlice";
 import { useGetProductsQuery } from "../../features/api/apiSlice";
 
 const Header = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
+  // eslint-disable-next-line no-unused-vars
+  useDispatch();
+  // eslint-disable-next-line no-unused-vars
+  useNavigate();
   const [searchValue, setSearchValue] = useState("");
   const { currentUser, cart } = useSelector(({ user }) => user);
 
-  const [values, setValues] = useState({ name: "Guest", avatar: AVATAR });
+  // eslint-disable-next-line no-unused-vars
+  const [, setValues] = useState({ name: "Guest", avatar: AVATAR });
 
   const { data, isLoading } = useGetProductsQuery({ title: searchValue });
 
@@ -29,11 +30,7 @@ const Header = () => {
     setValues(currentUser);
   }, [currentUser]);
 
-  const handleClick = () => {
-    if (!currentUser) dispatch(toggleForm(true));
-    else navigate(ROUTES.PROFILE);
-  };
-
+  // eslint-disable-next-line no-unused-vars
   const handleSearch = ({ target: { value } }) => {
     setSearchValue(value);
   };
